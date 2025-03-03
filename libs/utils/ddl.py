@@ -7,7 +7,7 @@ def create_catalog(
     catalog_name: str,
     container_name: str,
     account_name: str
-):
+) -> None:
     spark = SparkSession.getActiveSession()
     query = dedent(f"""
         CREATE CATALOG IF NOT EXISTS `{catalog_name}`
@@ -16,7 +16,7 @@ def create_catalog(
 
 def drop_catalog(
     catalog: str
-):
+) -> None:
     spark = SparkSession.getActiveSession()
     spark.sql(f"DROP CATALOG IF EXISTS `{catalog}`")
 
@@ -25,7 +25,7 @@ def create_external_location(
     container_name: str,
     account_name: str,
     storage_credential_name: str
-):
+) -> None:
     spark = SparkSession.getActiveSession()
     query = dedent(f"""
         CREATE EXTERNAL LOCATION IF NOT EXISTS `{name}`
@@ -40,7 +40,7 @@ def create_schema(
     catalog_name: str,
     container_name: str,
     account_name: str
-):
+) -> None:
     spark = SparkSession.getActiveSession()
     query = dedent(f"""
         CREATE SCHEMA IF NOT EXISTS `{catalog_name}`.`{schema_name}`
