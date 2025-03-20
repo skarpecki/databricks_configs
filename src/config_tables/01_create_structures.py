@@ -12,6 +12,7 @@ param_drop_tables = dbutils.widgets.get("drop_tables") == "True"
 
 import sys
 sys.path.append("../libs")
+sys.path.append("../configs")
 
 # COMMAND ----------
 
@@ -25,28 +26,21 @@ sys.path.append("../libs")
 
 from libs.utils.ddl import *
 from libs.utils import *
+from configs.base import BaseConfig
 
-# Must exists
-storage_credential_name = "unity-catalog-access-connector"
-container_name = "data"
-account_name = "skarpeckiadb"
-
-# Will be created
-catalog_name = "config"
-schema_name = "config"
-
-create_external_location(f"ext_{account_name}", container_name, account_name, storage_credential_name)
-create_catalog(catalog_name, container_name, account_name)
-create_schema(schema_name, catalog_name, container_name, account_name)
+create_external_location(f"ext_{account_name}_{adb_container_name}", adb_container_name, account_name, storage_credential_name)
+create_external_location(f"ext_{account_name}_{landing_container_name}", landing_container_name, account_name, storage_credential_name)
+create_catalog(config_catalog_name, adb_container_name, account_name)
+create_schema(config_schema, config_catalog_name, adb_container_name, account_name)
 
 # COMMAND ----------
 
 table_name = "raw_objects"
-table_location = f"{get_adls_location(container_name, account_name)}/{schema_name}/{table_name}"
+table_location = f"{get_adls_location(adb_container_name, account_name)}/{config_schema}/{table_name}"
 
 uc_table = UnityCatalogTable(
-    catalog_name=catalog_name,
-    schema_name=schema_name,
+    catalog_name=config_catalog_name,
+    schema_name=config_schema,
     object_name=table_name,
     location=table_location,
     columns=[
@@ -63,3 +57,10 @@ if param_drop_tables:
 
 dt = create_table(uc_table)
 dt.detail().display()
+
+
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC Useful for row level security and column level security, as can be easily integrated into RLS/CLS functions in views definition

@@ -44,7 +44,7 @@ def create_schema(
     spark = SparkSession.getActiveSession()
     query = dedent(f"""
         CREATE SCHEMA IF NOT EXISTS `{catalog_name}`.`{schema_name}`
-        MANAGED LOCATION '{get_adls_location(container_name, account_name)}'
+        MANAGED LOCATION '{get_adls_location(container_name, account_name)}/'
         """)
     spark.sql(query)
 
