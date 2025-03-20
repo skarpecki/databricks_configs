@@ -1,12 +1,10 @@
-from . import TableToExtract
+# Databricks notebook source
 from pyspark.sql import SparkSession
 import os
-from pathlib import Path
 
 def get_common_files_path(enviornment):
-    # Ensures correct path. Relative import would be from place of calling method.
-    files_path = Path(__file__).parent.parent.parent.parent
-    return f"file:{os.path.abspath(files_path)}/configs/{enviornment}"
+    files_path = f"../../../configs/{enviornment}"
+    return f"file:{os.path.abspath(files_path)}"
 
 def get_tables_to_extract(spark, source_system, enviornment):
     config_path = f"{get_common_files_path(enviornment)}/extract/objects_to_extract"
@@ -16,3 +14,9 @@ def get_tables_to_extract(spark, source_system, enviornment):
         for row in
         df.filter(df.source_system == source_system).collect()
     ]
+
+    
+
+# COMMAND ----------
+
+
