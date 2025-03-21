@@ -1,5 +1,4 @@
-from . import TableToExtract
-from pyspark.sql import SparkSession
+from .structures import TableToExtract
 import os
 from pathlib import Path
 

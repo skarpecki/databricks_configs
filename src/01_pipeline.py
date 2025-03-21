@@ -8,17 +8,16 @@ import sys
 
 sys.path.append("../")
 
-if param_config_source == 'file':
-    from libs.configs.files import get_tables_to_extract
-elif param_config_source == 'table':
-    from libs.configs.tables import get_tables_to_extract
-else:
-    raise AttributeError("Unknown parameter config source:")
+from libs.configs import get_tables_to_extract
 
 # COMMAND ----------
 
 # To avoid errors as parquets were generated with pandas
 spark.conf.set("spark.sql.legacy.parquet.nanosAsLong", "true")
 
-for table in get_tables_to_extract(spark, "AdventureWorks", "dev"):
+for table in get_tables_to_extract(param_config_source, spark, "AdventureWorks", "dev"):
     spark.read.load(table.landing_zone_url, format=table.file_format).display()
+
+# COMMAND ----------
+
+param_config_source

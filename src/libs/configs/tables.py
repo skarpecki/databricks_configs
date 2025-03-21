@@ -1,5 +1,4 @@
-from . import TableToExtract
-from pyspark.sql import SparkSession
+from .structures import TableToExtract
 
 def get_tables_to_extract(spark, source_system, environment):
     config_table = "config.config.raw_objects"
