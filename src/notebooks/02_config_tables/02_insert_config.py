@@ -5,10 +5,10 @@ param_delete_rows = dbutils.widgets.get("delete_rows") == "True"
 # COMMAND ----------
 
 import sys
-sys.path.append("../libs")
+sys.path.append("../../libs")
 
-from libs.utils.ddl import *
-from libs.utils import *
+from utils.ddl import *
+from utils import *
 from delta.tables import DeltaTable
 
 from pyspark.sql.functions import current_timestamp

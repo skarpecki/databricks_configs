@@ -1,6 +1,12 @@
 # Databricks notebook source
-from libs.utils.ddl import *
-from libs.utils import *
+import sys
+
+sys.path.append("../../libs")
+
+# COMMAND ----------
+
+from utils.ddl import *
+from utils import *
 
 container_name = "data"
 account_name = "skarpeckiadb"

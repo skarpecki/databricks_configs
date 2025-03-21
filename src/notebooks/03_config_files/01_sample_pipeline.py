@@ -1,9 +1,9 @@
 # Databricks notebook source
 import sys
 
-sys.path.append("../")
+sys.path.append("../../libs")
 
-from libs.configs.files import get_tables_to_extract
+from configs.files import get_tables_to_extract
 
 # COMMAND ----------
 

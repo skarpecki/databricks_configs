@@ -11,8 +11,8 @@ param_drop_tables = dbutils.widgets.get("drop_tables") == "True"
 # COMMAND ----------
 
 import sys
-sys.path.append("../")
-sys.path.append("../../")
+sys.path.append("../../libs")
+sys.path.append("../../../configs")
 
 # COMMAND ----------
 
@@ -24,9 +24,9 @@ sys.path.append("../../")
 
 # COMMAND ----------
 
-from libs.utils.ddl import *
-from libs.utils import *
-from configs.base import *
+from utils.ddl import *
+from utils import *
+from base import *
 
 create_external_location(f"ext_{account_name}_{adb_container_name}", adb_container_name, account_name, storage_credential_name)
 create_external_location(f"ext_{account_name}_{landing_container_name}", landing_container_name, account_name, storage_credential_name)
