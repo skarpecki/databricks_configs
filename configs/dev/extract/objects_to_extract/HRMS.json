@@ -1,0 +1,38 @@
+[
+    {
+        "object_name": "employee",
+        "source_system": "HRMS",
+        "landing_zone_url": "abfss://landing@corporatedb.dfs.core.windows.net/catalog=HRData/schema=Employee/object=Employee",
+        "source_format": "csv"
+    },
+    {
+        "object_name": "payroll",
+        "source_system": "HRMS",
+        "landing_zone_url": "abfss://landing@corporatedb.dfs.core.windows.net/catalog=HRData/schema=Finance/object=Payroll",
+        "source_format": "csv"
+    },
+    {
+        "object_name": "department",
+        "source_system": "HRMS",
+        "landing_zone_url": "abfss://landing@corporatedb.dfs.core.windows.net/catalog=HRData/schema=Organization/object=Department",
+        "source_format": "json"
+    },
+    {
+        "object_name": "leave_requests",
+        "source_system": "HRMS",
+        "landing_zone_url": "abfss://landing@corporatedb.dfs.core.windows.net/catalog=HRData/schema=HR/object=LeaveRequests",
+        "source_format": "json"
+    },
+    {
+        "object_name": "recruitment",
+        "source_system": "TalentAcquisition",
+        "landing_zone_url": "abfss://landing@corporatedb.dfs.core.windows.net/catalog=TalentDB/schema=Recruitment/object=JobApplications",
+        "source_format": "parquet"
+    },
+    {
+        "object_name": "performance_reviews",
+        "source_system": "HRMS",
+        "landing_zone_url": "abfss://landing@corporatedb.dfs.core.windows.net/catalog=HRData/schema=Performance/object=Reviews",
+        "source_format": "parquet"
+    }
+]

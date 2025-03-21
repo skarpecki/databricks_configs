@@ -1,0 +1,14 @@
+[
+   {
+        "object_name": "supplier",
+        "source_system": "ERP",
+        "landing_zone_url": "abfss://landing@corporatedb.dfs.core.windows.net/catalog=SupplyChain/schema=Vendors/object=Supplier",
+        "source_format": "csv"
+    },
+    {
+        "object_name": "purchase_orders",
+        "source_system": "ERP",
+        "landing_zone_url": "abfss://landing@corporatedb.dfs.core.windows.net/catalog=SupplyChain/schema=Purchasing/object=PurchaseOrders",
+        "source_format": "json"
+    }
+]
