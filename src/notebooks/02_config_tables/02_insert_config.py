@@ -1,11 +1,12 @@
 # Databricks notebook source
+# MAGIC %run "./00_conifg_path"
+
+# COMMAND ----------
+
 dbutils.widgets.dropdown("delete_rows", "False", ["True", "False"], "Delete rows")
 param_delete_rows = dbutils.widgets.get("delete_rows") == "True"
 
 # COMMAND ----------
-
-import sys
-sys.path.append("../../libs")
 
 from utils.ddl import *
 from utils import *

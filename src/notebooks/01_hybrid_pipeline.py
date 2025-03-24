@@ -1,12 +1,13 @@
 # Databricks notebook source
+# MAGIC %run "./00_config_path"
+
+# COMMAND ----------
+
 dbutils.widgets.dropdown("config source", "table", ["table", "file"])
 param_config_source = dbutils.widgets.get("config source")
 
 # COMMAND ----------
 
-import sys
-
-sys.path.append("../")
 
 from libs.configs import get_tables_to_extract
 

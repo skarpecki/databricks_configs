@@ -10,9 +10,7 @@ param_drop_tables = dbutils.widgets.get("drop_tables") == "True"
 
 # COMMAND ----------
 
-import sys
-sys.path.append("../../libs")
-sys.path.append("../../../configs")
+# MAGIC %run "./config_path"
 
 # COMMAND ----------
 

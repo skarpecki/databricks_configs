@@ -1,7 +1,7 @@
 # Databricks notebook source
-import sys
+# MAGIC %run "./config_path"
 
-sys.path.append("../../libs")
+# COMMAND ----------
 
 from configs.files import get_tables_to_extract
 
