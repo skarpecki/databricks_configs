@@ -1,28 +1,32 @@
 # Databricks notebook source
+# MAGIC %run "./00_config_path"
+
+# COMMAND ----------
+
 dbutils.widgets.dropdown("delete_rows", "False", ["True", "False"], "Delete rows")
 param_delete_rows = dbutils.widgets.get("delete_rows") == "True"
 
 # COMMAND ----------
-
-import sys
-sys.path.append("../../libs")
 
 from utils.ddl import *
 from utils import *
 from delta.tables import DeltaTable
 
 from pyspark.sql.functions import current_timestamp
+from base import (
+    account_name,
+    adb_container_name,
+    config_catalog_name,
+    config_schema
+)
 
 # COMMAND ----------
-
-container_name = "data"
-account_name = "skarpeckiadb"
 
 catalog_name = "config"
 schema_name = "config"
 table_name = "raw_objects"
 
-table_location = f"{get_adls_location(container_name, account_name)}/{schema_name}/{table_name}"
+table_location = f"{get_adls_location(adb_container_name, account_name)}/{schema_name}/{table_name}"
 
 land_url_base = get_adls_location("landing", account_name)
 data_dict = [
@@ -43,8 +47,8 @@ df = spark.createDataFrame(data_dict).withColumns({
     "last_modified": current_timestamp() 
 })
 
-dt = DeltaTable.forName(spark, f"{catalog_name}.{schema_name}.{table_name}")
-tgt_columns = spark.read.table(f"{catalog_name}.{schema_name}.{table_name}").columns
+dt = DeltaTable.forName(spark, f"{config_catalog_name}.{config_schema}.{table_name}")
+tgt_columns = spark.read.table(f"{config_catalog_name}.{config_schema}.{table_name}").columns
 
 cols_to_set = {col: f"src.{col}" for col in tgt_columns if col != "last_modified"}
 

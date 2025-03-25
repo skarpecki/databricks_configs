@@ -1,0 +1,8 @@
+[
+    {
+        "object_name": "address",
+        "source_system": "AdventureWorks",
+        "landing_zone_url": "abfss://landing@skarpeckiadb.dfs.core.windows.net/catalog=AdventureWorksLT2022/schema=SalesLT/object=Address",
+        "source_format": "parquet"
+    }
+]

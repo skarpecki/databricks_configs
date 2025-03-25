@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Generated schema for Root",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "object_name": {
+        "type": "string"
+      },
+      "source_system": {
+        "type": "string"
+      },
+      "landing_zone_url": {
+        "type": "string"
+      },
+      "source_format": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "object_name",
+      "source_system",
+      "landing_zone_url",
+      "source_format"
+    ]
+  }
+}

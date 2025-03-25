@@ -1,7 +1,7 @@
 # Databricks notebook source
-import sys
+# MAGIC %run "./00_config_path"
 
-sys.path.append("../../libs")
+# COMMAND ----------
 
 from configs.files import get_tables_to_extract
 
@@ -10,5 +10,5 @@ from configs.files import get_tables_to_extract
 # To avoid errors as parquets were generated with pandas
 spark.conf.set("spark.sql.legacy.parquet.nanosAsLong", "true")
 
-for table in get_tables_to_extract(spark, "AdventureWorks", "dev"):
+for table in get_tables_to_extract(spark, "AdventureWorks", "prod"):
     spark.read.load(table.landing_zone_url, format=table.file_format).display()

@@ -1,11 +1,12 @@
 # Databricks notebook source
+# MAGIC %run "./00_config_path"
+
+# COMMAND ----------
+
 dbutils.widgets.text("source_system", "AdventureWorks", "Source system")
 param_source_system = dbutils.widgets.get("source_system")
 
 # COMMAND ----------
-
-import sys
-sys.path.append("../../libs")
 
 from configs.tables import get_tables_to_extract
 from utils import get_adls_location
