@@ -9,7 +9,7 @@
 
 import pytest
 import sys
-import os, sys
+import os
 
 
 print(os.getcwd())

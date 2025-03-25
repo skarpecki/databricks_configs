@@ -10,7 +10,7 @@ param_drop_tables = dbutils.widgets.get("drop_tables") == "True"
 
 # COMMAND ----------
 
-# MAGIC %run "./config_path"
+# MAGIC %run "./00_config_path"
 
 # COMMAND ----------
 
@@ -57,8 +57,3 @@ dt = create_table(uc_table)
 dt.detail().display()
 
 
-
-# COMMAND ----------
-
-# MAGIC %md
-# MAGIC Useful for row level security and column level security, as can be easily integrated into RLS/CLS functions in views definition

@@ -37,7 +37,7 @@ def test_dev_config(path):
 @pytest.mark.parametrize("path", paths_to_check)
 def test_prod_config(path):
     """Test JSON validation for all specified paths."""
-    env = "dev"  # Change this to dynamically test different environments
+    env = "prod"  # Change this to dynamically test different environments
 
     json_file = path.replace(env_placeholder, env) + "/AdventureWorks.json"
     schema_file = path.replace(env_placeholder, env) + ".json"
