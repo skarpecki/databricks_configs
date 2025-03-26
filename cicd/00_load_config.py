@@ -35,7 +35,7 @@ df = (
 dt = DeltaTable.forName(spark, f"{catalog_name}.{schema_name}.{table_name}")
 tgt_columns = spark.read.table(f"{catalog_name}.{schema_name}.{table_name}").columns
 
-cols_to_set = {col: f"src.{col}" for col in tgt_columns if col != "last_modified"}
+cols_to_set = {col: f"src.{col}" for col in tgt_columns if col != "inserted_at"}
 
 (
     dt.alias("tgt")
